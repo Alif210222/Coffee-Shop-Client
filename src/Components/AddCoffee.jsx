@@ -14,7 +14,7 @@ const AddCoffee = () => {
 
 
         // Now send data to database 
-        fetch("http://localhost:4000/coffees" ,{
+        fetch("https://coffee-shop-server-fawn-one.vercel.app/coffees" ,{
             method:"POST",
             headers:{
                     'content-type' : "application/json"

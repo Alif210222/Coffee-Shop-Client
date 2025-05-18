@@ -13,10 +13,10 @@ const UpdateCoffee = () => {
             const form = e.target
             const formData = new FormData(form)
             const updatedCoffee = Object.fromEntries(formData.entries())
-            console.log(updatedCoffee)
+            // console.log(updatedCoffee)
 
         // sent updated coffee to the db
-           fetch(`http://localhost:4000/coffees/${_id}`, {
+           fetch(`https://coffee-shop-server-fawn-one.vercel.app/coffees/${_id}`, {
                 method:"PUT",
                 headers:{
                     "content-type" : "application/json"

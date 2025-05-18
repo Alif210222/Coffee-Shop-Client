@@ -12,6 +12,11 @@ import Home from './Components/Home.jsx';
 import AddCoffee from './Components/AddCoffee.jsx';
 import UpdateCoffee from './Components/UpdateCoffee.jsx';
 import CoffeeDetails from './Components/CoffeeDetails.jsx';
+import Signin from './Components/Signin.jsx';
+import Signup from './Components/Signup.jsx';
+
+import AuthProvider from './Context/AuthProvider.jsx';
+import Users from './Components/Users.jsx';
 
 
 const router = createBrowserRouter([
@@ -21,7 +26,7 @@ const router = createBrowserRouter([
    children:[
     {
       index:true,
-      loader:()=> fetch("http://localhost:4000/coffees"),
+      loader:()=> fetch("https://coffee-shop-server-fawn-one.vercel.app/coffees"),
       Component:Home
     },
     {
@@ -30,13 +35,27 @@ const router = createBrowserRouter([
     },
     {
       path:"/updateCoffee/:id",
-      loader:({params})=> fetch(`http://localhost:4000/coffees/${params.id}`),
+      loader:({params})=> fetch(`https://coffee-shop-server-fawn-one.vercel.app/coffees/${params.id}`),
       Component:UpdateCoffee
     },
     {
       path:'/coffee/:id',
-      loader:({params})=> fetch(`http://localhost:4000/coffees/${params.id}`),
+      loader:({params})=> fetch(`https://coffee-shop-server-fawn-one.vercel.app/coffees/${params.id}`),
       Component:CoffeeDetails
+    },
+    {
+      path:"/signin",
+      Component:Signin
+    },
+    {
+      path:"/signup",
+      Component:Signup
+    },
+    {
+     path:"/users",
+     loader:()=> fetch("https://coffee-shop-server-fawn-one.vercel.app/users"),
+     Component:Users
+
     }
    ]
   },
@@ -45,6 +64,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router} />
+    <AuthProvider>
+             <RouterProvider router={router} />
+    </AuthProvider>
+  
   </StrictMode>,
 )

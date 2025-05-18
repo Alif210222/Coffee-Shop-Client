@@ -27,7 +27,7 @@ const CoffeeCard = ({coffee , coffees , setCoffees}) => {
 
                 // start delete proccess
 
-                fetch(`http://localhost:4000/coffees/${_id}` , {
+                fetch(`https://coffee-shop-server-fawn-one.vercel.app/coffees/${_id}` , {
                     method:"DELETE"
                 })
                 .then(res => res.json())
